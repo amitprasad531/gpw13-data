@@ -20,11 +20,14 @@ shinyUI(
                   min = 2000, max = 2018,
                   value = c(2013, 2016),
                   sep = ""),
-      selectizeInput("indicators_data", "Select Indicators",
+      pickerInput("indicators_data", "Select Indicators (from dropdown list)",
                      choices = gpw_colnames,
-                     selected = sample(gpw_colnames, 10),
                      multiple = TRUE,
-                     options = list(placeholder = "Select Indicators")), 
+                     selected = sample(gpw_colnames, 10),
+                     options = list(title = "Select Indicators",
+                                    `actions-box` = TRUE,
+                                     size = 15)
+                  ), 
       downloadButton("downloadData", "Download Data"),
       width = 3
     ),

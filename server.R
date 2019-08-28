@@ -16,11 +16,14 @@ shinyServer(function(input, output, session) {
   })
   
   dataTable <- reactive({
-    req(input$country_data, input$indicators_data)
+    req(input$country_data)
     if ("All" %in% input$country_data) {
       temp_data() %>%
         filter(Year >= input$year_data[1] & Year <= input$year_data[2]) %>%
         select(Country, Region, Year, input$indicators_data)
+    } else if (is.null(input$indicators_data)) {
+      temp_data() %>%
+        select(Country, Region, Year)
     } else {
       temp_data() %>%
         filter(Country %in% input$country_data) %>%

@@ -2,6 +2,7 @@ library(shiny)
 library(dplyr)
 library(DT)
 library(markdown)
+library(shinyWidgets)
 
 gpw <- read.csv("data/gpw.csv", header = TRUE)
 source("www/gpwvectors.R")
